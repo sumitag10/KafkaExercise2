@@ -1,10 +1,10 @@
 package com.example.jpakafka.Controller;
 
+import com.sun.istack.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +22,7 @@ public class ProducerController {
     private static final String TOPIC = "produce_topic";
 
     @GetMapping("/publish/{message}")
-    public String post(@PathVariable("message") @NonNull final String message) {
+    public String post(@PathVariable("message") @NotNull final String message) {
         kafkaTemplate.send(TOPIC, message);
         LOGGER.info("Message is send to the topic successfully");
         return "Publish successfully";

@@ -1,6 +1,7 @@
 package com.example.jpakafka.Controller;
 
 import com.example.jpakafka.Service.LibraryService;
+import com.sun.istack.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class LibraryController {
     private LibraryService libraryService;
 
     @GetMapping("/library/{name}")
-    public String saveBookName(@PathVariable("name") @NonNull final String name) {
+    public String saveBookName(@PathVariable("name") @NotNull final String name) {
         libraryService.saveBookName(name);
         return "Saved in Database";
     }
